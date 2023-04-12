@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import Navbar from '@/components/NavbarComponent.vue';
+  import Pagination from '@/components/PaginationComponent.vue'
 </script>
 
 <template>
@@ -36,6 +37,10 @@
         </div>
       </div>
     </section>
+
+    <section class="pagination d-flex flex-column align-items-center mt-5">
+      <Pagination />
+    </section>
   </main>
 </template>
 
@@ -48,5 +53,8 @@
   }
   .filters-container {
     width: 60%;
+  }
+  .pagination {
+    width: 70%;
   }
 </style>
