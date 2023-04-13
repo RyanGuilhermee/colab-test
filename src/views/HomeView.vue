@@ -19,7 +19,6 @@
     const targetValue = event.target as EventTargetValue;
     gender.value = targetValue.value;
   }
-
 </script>
 
 <template>
@@ -67,7 +66,7 @@
       </div>
     </section>
 
-    <section class="pagination d-flex flex-column align-items-center mt-5">
+    <section class="container-fluid pagination d-flex flex-column align-items-center mt-5">
       <Pagination :gender="gender" :nat="nat" />
     </section>
   </main>
@@ -85,5 +84,10 @@
   }
   .pagination {
     width: 70%;
+  }
+  .form-select {
+    background-color: #343a40;
+    color: #f8f9fa;
+    border: #343a40;
   }
 </style>

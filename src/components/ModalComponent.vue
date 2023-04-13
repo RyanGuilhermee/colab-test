@@ -23,34 +23,34 @@
         </div>
         <div class="modal-body">
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" 
+            <input type="email" class="form-control bg-dark" id="floatingInputDisabled" 
             :value="`${userDetails?.location.city}, ${userDetails?.location.state}, ${userDetails?.location.country}`" disabled>
             <label for="floatingInputDisabled">Localização</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" :value="userDetails?.email" disabled>
+            <input type="email" class="form-control bg-dark" id="floatingInputDisabled" :value="userDetails?.email" disabled>
             <label for="floatingInputDisabled">Email</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" :value="userDetails?.cell" disabled>
+            <input type="email" class="form-control bg-dark" id="floatingInputDisabled" :value="userDetails?.cell" disabled>
             <label for="floatingInputDisabled">Celular</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" :value="userDetails?.dob.date" disabled>
+            <input type="email" class="form-control bg-dark" id="floatingInputDisabled" :value="userDetails?.dob.date" disabled>
             <label for="floatingInputDisabled">Data de nascimento</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" :value="`${userDetails?.dob.age} anos`" disabled>
+            <input type="email" class="form-control bg-dark" id="floatingInputDisabled" :value="`${userDetails?.dob.age} anos`" disabled>
             <label for="floatingInputDisabled">Idade</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInputDisabled" 
+            <input type="email" class="form-control bg-dark" id="floatingInputDisabled" 
             :value="userDetails?.gender === 'male' ? 'Masculino' : 'Feminino'" disabled>
             <label for="floatingInputDisabled">Gênero</label>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
         </div>
       </div>
     </div>
@@ -58,5 +58,12 @@
 </template>
 
 <style scoped>
+  .modal-content {
+    background-color: #343a40;
+  }
+  input {
+    color: #f8f9faec;
+    border: #343a40;
+  }
 </style>
 

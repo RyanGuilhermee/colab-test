@@ -47,7 +47,7 @@
 
 <template>
     <Modal :user="userCard as RandomUser" />
-    <div class="container text-center">
+    <div class="container-fluid text-center">
         <div v-for="i in 2" :key="i" class="row">
             <template v-for="n in 3" :key="n">
                 <div class="col col-md-4">
@@ -79,7 +79,7 @@
     </div>
 
     <div class="mt-4 mb-4">
-        <button class="btn btn-outline-dark" @click="backPage">prev</button>
+        <button class="btn btn-outline-light page-control" @click="backPage">Anterior</button>
         <button :class="item === page ? 'btn btn-primary' : 'btn btn-outline-primary'"
         v-for="item in Math.ceil(data.results.length / perPage)"
         :key="item"
@@ -87,10 +87,23 @@
         >
         {{ item }}
         </button>
-        <button class="btn btn-outline-dark" @click="nextPage">next</button>
+        <button class="btn btn-outline-light page-control" @click="nextPage">Próximo</button>
     </div>
 </template>
 
 <style scoped>
+    .card {
+        background-color: #343a40;
+    }
+    p {
+        font-size: 13px;
+    }
+    button {
+        font-size: 14px;
+        margin: 2px;
+    }
+    button.page-control {
+        margin: 8px;
+    }
 </style>
   

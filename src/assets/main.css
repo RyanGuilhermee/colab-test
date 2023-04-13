@@ -2,49 +2,48 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: var(--dark-color);
 }
 
 @import "~bootstrap/scss/bootstrap";
 
-.dark {
-  --bs-dark: #343a40;
-  --bs-secondary: #c8cbcf;
-  --bs-secondary-rgb: 200, 203, 207;
-  --bs-body-color: #f8f9fa;
-  --bs-body-bg: #212529;
-  --bs-border-color: #343a40;
-  --bs-border-color-rgb: 52, 58, 64;
-  --bs-component-active-color: #f8f9fa;
-  --bs-component-active-bg: #6c757d;
-  --bs-gray: #e9ecef;
-  --bs-gray-dark: #343a40;
-  --bs-gray-dark-rgb: 52, 58, 64;
-  --bs-gray-100: #f8f9fa;
-  --bs-gray-200: #e9ecef;
-  --bs-gray-300: #dee2e6;
-  --bs-gray-400: #ced4da;
-  --bs-gray-500: #adb5bd;
-  --bs-gray-600: #6c757d;
-  --bs-gray-700: #495057;
-  --bs-gray-800: #343a40;
-  --bs-gray-900: #212529;
-  --bs-primary: #0d6efd;
-  --bs-primary-rgb: 13, 110, 253;
-  --bs-secondary: #6c757d;
-  --bs-success: #198754;
-  --bs-success-rgb: 25, 135, 84;
-  --bs-danger: #dc3545;
-  --bs-danger-rgb: 220, 53, 69;
-  --bs-warning: #ffc107;
-  --bs-warning-rgb: 255, 193, 7;
-  --bs-info: #0dcaf0;
-  --bs-info-rgb: 13, 202, 240;
-  --bs-light: #f8f9fa;
-  --bs-dark: #343a40;
-  --bs-white: #fff;
-  --bs-black: #000;
+:root {
+  --primary-color: #811ac0;
+  --primary-color-hov: #b448f7;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
 }
 
-:root {
-  --bs-primary: #0d6efd;
+h1, h3, h5, p, option, label {
+  color: var(--light-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-hov);
+  border-color: var(--primary-color-hov);
+}
+
+.btn-primary:active {
+  background-color: var(--primary-color-hov);
+  border-color: var(--primary-color-hov);
+}
+
+.btn-outline-primary {
+  border-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color-hov);
+  border-color: var(--primary-color-hov);
 }
