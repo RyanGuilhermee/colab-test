@@ -1,20 +1,20 @@
 <script setup lang="ts">
     import { ref, computed, defineProps, onMounted, watch } from 'vue';
     import Modal from '@/components/ModalComponent.vue'
-    import { getUsers, type RandomUser } from '@/services/randomUserService';
+    import { getUsers, type RandomUserResults, type RandomUser } from '@/services/randomUserService';
 
     const props = defineProps<{
         gender: string,
         nat: string
     }>();
 
-    let data = ref<RandomUser>({
+    let data = ref<RandomUserResults>({
         results: [],
         info: { page: 0, results: 0, seed: '', version: ''}
     });
     let page = ref(1);
     const perPage = 6;
-    let userCard = ref({});
+    let userCard = ref<RandomUser>();
 
     watch([() => props.gender, () => props.nat], async ([newGender, newNat]) => {
         data.value = await getUsers(`gender=${newGender}&nat=${newNat}`);
@@ -40,13 +40,13 @@
     const goToPage = (numPage: number) => {
         page.value = numPage;
     };
-    const handleUser = (user: any) => {
+    const handleUser = (user: RandomUser) => {
         userCard.value = user;
     }
 </script>
 
 <template>
-    <Modal :user="userCard" />
+    <Modal :user="userCard as RandomUser" />
     <div class="container text-center">
         <div v-for="i in 2" :key="i" class="row">
             <template v-for="n in 3" :key="n">

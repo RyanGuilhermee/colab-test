@@ -1,11 +1,10 @@
 <script setup lang="ts">
-  import { defineProps, watch, ref } from 'vue';
+  import type { RandomUser } from '@/services/randomUserService';
+import { defineProps, watch, ref } from 'vue';
 
-  const props = defineProps<{
-    user: {}
-  }>();
+  const props = defineProps<{user: RandomUser}>();
 
-  const userDetails = ref({});
+  const userDetails = ref<RandomUser>();
 
   watch(() => props.user, (newUser) => {
     userDetails.value = newUser;
@@ -17,7 +16,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="userDetailsModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="userDetailsModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
