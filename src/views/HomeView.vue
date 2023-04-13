@@ -1,6 +1,25 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
   import Navbar from '@/components/NavbarComponent.vue';
-  import Pagination from '@/components/PaginationComponent.vue'
+  import Pagination from '@/components/PaginationComponent.vue';
+
+  interface EventTargetValue extends EventTarget {
+    value: string;
+  }
+
+  const gender = ref('');
+  const nat = ref('');
+
+  const handleChangeNat = (event: Event) => {
+    const targetValue = event.target as EventTargetValue;
+    nat.value = targetValue.value;
+  }
+
+  const handleChangeGen = (event: Event) => {
+    const targetValue = event.target as EventTargetValue;
+    gender.value = targetValue.value;
+  }
+
 </script>
 
 <template>
@@ -15,15 +34,25 @@
 
       <div class="filters-container d-flex flex-row justify-content-between mt-2">
         <div class="form-floating">
-          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option value="female" selected>Feminino</option>
+          <select class="form-select" 
+          id="floatingSelect" 
+          aria-label="Floating label select example"
+          @change="handleChangeGen"
+          >
+            <option value="" selected>Selecionar</option>
+            <option value="female">Feminino</option>
             <option value="male">Masculino</option>
           </select>
           <label for="floatingSelect">Gênero</label>
         </div>
         <div class="form-floating">
-          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-            <option value="br" selected>Brasil</option>
+          <select class="form-select" 
+          id="floatingSelect" 
+          aria-label="Floating label select example"
+          @change="handleChangeNat"
+          >
+            <option value="" selected>Selecionar</option>
+            <option value="br">Brasil</option>
             <option value="us">Estados Unidos</option>
             <option value="au">Austrália</option>
             <option value="ca">Canadá</option>
@@ -39,7 +68,7 @@
     </section>
 
     <section class="pagination d-flex flex-column align-items-center mt-5">
-      <Pagination />
+      <Pagination :gender="gender" :nat="nat" />
     </section>
   </main>
 </template>
