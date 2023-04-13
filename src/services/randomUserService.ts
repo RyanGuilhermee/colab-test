@@ -39,7 +39,7 @@ export type RandomUser = {
   };
   nat: string;
 };
-//login, registered, id
+
 export type RandomUserResults = {
   results: RandomUser[];
   info: {
