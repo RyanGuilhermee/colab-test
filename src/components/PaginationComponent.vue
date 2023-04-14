@@ -60,7 +60,7 @@
 </script>
 
 <template>
-    <Modal :user="userCard as RandomUser" />
+    <Modal :user="(userCard as RandomUser)" />
     <div class="container-fluid text-center">
         <div v-for="i in 2" :key="i" class="row">
             <template v-for="n in 3" :key="n">
