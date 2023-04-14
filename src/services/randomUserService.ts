@@ -51,7 +51,7 @@ export type RandomUserResults = {
 };
 
 export const getUsers = async (query: string = ''): Promise<RandomUserResults> => {
-  const response = await fetch(`${baseUrl}/?results=12&${query}&exc=id,login,registered`);
+  const response = await fetch(`${baseUrl}/?${query}&exc=id,login,registered`);
   const data = await response.json();
 
   return data;

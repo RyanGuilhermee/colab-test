@@ -15,20 +15,34 @@
     let page = ref(1);
     const perPage = 6;
     let userCard = ref<RandomUser>();
+    let prevPage = 1;
 
     watch([() => props.gender, () => props.nat], async ([newGender, newNat]) => {
-        data.value = await getUsers(`gender=${newGender}&nat=${newNat}`);
+        page.value = 1;
+        prevPage = 1;
+        data.value = await getUsers(`results=6&page=${page.value}&gender=${newGender}&nat=${newNat}`);
+    });
+
+    watch(() => page.value, async (newPage) => {
+        if (newPage > prevPage) {
+            const pageDiff = newPage - prevPage;
+
+            const { results } = await getUsers(`results=${pageDiff * perPage}&page=${newPage}&gender=${props.gender}&nat=${props.nat}`);
+
+            data.value.results.push(...results);
+            prevPage = newPage;
+        }
     });
 
     onMounted(async () => {
-        data.value = await getUsers();
+        data.value = await getUsers(`results=6`);
     });
     
     const paginatedData = computed(() =>
         data.value.results.slice((page.value - 1) * perPage, page.value * perPage)
     );
     const nextPage = () => {
-        if (page.value !== Math.ceil(data.value.results.length / perPage)) {
+        if (page.value !== Math.ceil(30 / perPage)) {
             page.value += 1;
         }
     };
@@ -62,11 +76,11 @@
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 17px;">{{ 
                             paginatedData[(i - 1) * 3 + (n - 1)] ? `${paginatedData[(i - 1) * 3 + (n - 1)].name.first} ${paginatedData[(i - 1) * 3 + (n - 1)].name.last }` :
-                            'Sem elemento'
+                            '...'
                             }}</h5>
                             <p class="card-text">
                                 {{ paginatedData[(i - 1) * 3 + (n - 1)] ? `${paginatedData[(i - 1) * 3 + (n - 1)].location.country}` :
-                            'Sem elemento' }}
+                            '...' }}
                             </p>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userDetailsModal">
                                 Detalhes
@@ -81,7 +95,7 @@
     <div class="mt-4 mb-4">
         <button class="btn btn-outline-light page-control" @click="backPage">Anterior</button>
         <button :class="item === page ? 'btn btn-primary' : 'btn btn-outline-primary'"
-        v-for="item in Math.ceil(data.results.length / perPage)"
+        v-for="item in Math.ceil(30 / perPage)"
         :key="item"
         @click="() => goToPage(item)"
         >
