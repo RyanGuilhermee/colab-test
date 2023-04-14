@@ -2,6 +2,7 @@
     import { ref, computed, defineProps, onMounted, watch } from 'vue';
     import Modal from '@/components/ModalComponent.vue'
     import { getUsers, type RandomUserResults, type RandomUser } from '@/services/randomUserService';
+    import FlashMessage from '@/components/FlashMessageComponent.vue';
 
     const props = defineProps<{
         gender: string,
@@ -16,26 +17,43 @@
     const perPage = 6;
     let userCard = ref<RandomUser>();
     let prevPage = 1;
+    let dismiss = ref('fade');
+    let message = ref('');
 
     watch([() => props.gender, () => props.nat], async ([newGender, newNat]) => {
-        page.value = 1;
-        prevPage = 1;
-        data.value = await getUsers(`results=6&page=${page.value}&gender=${newGender}&nat=${newNat}`);
+        try {
+            page.value = 1;
+            prevPage = 1;
+            data.value = await getUsers(`results=6&page=${page.value}&gender=${newGender}&nat=${newNat}`);
+        } catch (error) {
+            dismiss.value = 'show'
+            message.value = 'Ocorreu um erro :(';
+        }
     });
 
     watch(() => page.value, async (newPage) => {
         if (newPage > prevPage) {
-            const pageDiff = newPage - prevPage;
+            try {
+                const pageDiff = newPage - prevPage;
 
-            const { results } = await getUsers(`results=${pageDiff * perPage}&page=${newPage}&gender=${props.gender}&nat=${props.nat}`);
+                const { results } = await getUsers(`results=${pageDiff * perPage}&page=${newPage}&gender=${props.gender}&nat=${props.nat}`);
 
-            data.value.results.push(...results);
-            prevPage = newPage;
+                data.value.results.push(...results);
+                prevPage = newPage;
+            } catch (error) {
+                dismiss.value = 'show'
+                message.value = 'Ocorreu um erro :(';
+            }
         }
     });
 
     onMounted(async () => {
-        data.value = await getUsers(`results=6`);
+        try {
+            data.value = await getUsers(`results=6`);
+        } catch (error) {
+            dismiss.value = 'show'
+            message.value = 'Ocorreu um erro :(';
+        }
     });
     
     const paginatedData = computed(() =>
@@ -61,6 +79,8 @@
 
 <template>
     <Modal :user="(userCard as RandomUser)" />
+    <FlashMessage type="danger" :dismiss="dismiss" :message="message" />
+
     <div class="container-fluid text-center">
         <div v-for="i in 2" :key="i" class="row">
             <template v-for="n in 3" :key="n">
