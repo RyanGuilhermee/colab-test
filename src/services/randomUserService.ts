@@ -52,6 +52,11 @@ export type RandomUserResults = {
 
 export const getUsers = async (query: string = ''): Promise<RandomUserResults> => {
   const response = await fetch(`${baseUrl}/?${query}&exc=id,login,registered`);
+
+  if (!response.ok) {
+    throw new Error('Ocorreu um erro :(');
+  }
+
   const data = await response.json();
 
   return data;
