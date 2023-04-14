@@ -56,22 +56,22 @@
                     :id="String((i - 1) * 3 + (n - 1))" 
                     style="width: 14rem;"
                     >
-                    <img :src="
-                        paginatedData[(i - 1) * 3 + (n - 1)] ? paginatedData[(i - 1) * 3 + (n - 1)].picture.large :
-                        '...'" class="card-img-top" alt="..."  style="height: 160px;">
-                    <div class="card-body">
-                        <h5 class="card-title" style="font-size: 17px;">{{ 
-                         paginatedData[(i - 1) * 3 + (n - 1)] ? `${paginatedData[(i - 1) * 3 + (n - 1)].name.first} ${paginatedData[(i - 1) * 3 + (n - 1)].name.last }` :
-                         'Sem elemento'
-                        }}</h5>
-                        <p class="card-text">
-                            {{ paginatedData[(i - 1) * 3 + (n - 1)] ? `${paginatedData[(i - 1) * 3 + (n - 1)].location.country}` :
-                         'Sem elemento' }}
-                        </p>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userDetailsModal">
-                            Detalhes
-                        </button>
-                    </div>
+                        <img :src="
+                            paginatedData[(i - 1) * 3 + (n - 1)] ? paginatedData[(i - 1) * 3 + (n - 1)].picture.large :
+                            '...'" class="card-img-top" alt="..."  style="height: 160px;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 17px;">{{ 
+                            paginatedData[(i - 1) * 3 + (n - 1)] ? `${paginatedData[(i - 1) * 3 + (n - 1)].name.first} ${paginatedData[(i - 1) * 3 + (n - 1)].name.last }` :
+                            'Sem elemento'
+                            }}</h5>
+                            <p class="card-text">
+                                {{ paginatedData[(i - 1) * 3 + (n - 1)] ? `${paginatedData[(i - 1) * 3 + (n - 1)].location.country}` :
+                            'Sem elemento' }}
+                            </p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userDetailsModal">
+                                Detalhes
+                            </button>
+                        </div>
                     </div>
                 </div>
             </template>
