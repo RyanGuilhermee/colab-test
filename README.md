@@ -1,46 +1,51 @@
-# colab-test
+<p align="center">
+    <img src="https://uploads-ssl.webflow.com/5d7fa6d94cc8594259880539/5d7fa6d94cc85971ee880569_web-clip.png" style="margin-lef: 100px;" width="200" height="200">
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+# DESAFIO ![Colab](https://uploads-ssl.webflow.com/5d7fa6d94cc8594259880539/62fbe3abfd2be5aa8cdc8cc1_tipo.png)
 
-## Recommended IDE Setup
+## SOBRE O DESAFIO 📝
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Listar os usuários e seus detalhes em uma interface web a partir da API [random user](https://randomuser.me/). Pode ser feito da maneira que quiser e achar melhor, com qualquer framework de escolha.
 
-## Type Support for `.vue` Imports in TS
+## EXPERIÊNCIA 🧪
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Embora o objetivo do projeto seja simples, ainda assim eu consegui tirar bons aprendizados!
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Há pouco tempo eu tava pensando em começar a aprender Vue, e como o desafio me deu essa liberdade para criar com o que eu quisesse, eu pensei: "por que não, né?".
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+Comecei dando uma olhada no YouTube e vi alguns vídeos de introdução ao Vue, criando um pequeno projeto, etc. Faço isso pra ter um overview da tecnologia que eu quero aprender e ter uma noção rápida de como trabalhar com ela. Pensei um pouco em como seria o design, rabisquei algumas coisas e pensei também quais funcionalidades eu faria. Após isso, abri a documentação e o VS Code para aprender na prática.
 
-## Customize configuration
+Eu já tinha tido contato com outros frameworks como Angular e React, mas o Vue me surpreendeu. Ele se assemelha a ambos, mas se destaca, na minha opinião, pela facilidade/curva de aprendizado, sintaxe limpa, organização de arquivos (principalmente usando a API de composição) e o fácil entendimento da documentação (fiz a propaganda do Vue, agora vou voltar pra experiência haha).
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Tive muitos desafios, principalmente por ser um framework novo e eu não ter tanta autonomia, mas resolvi implementar uma paginação, que é algo que eu nunca tinha feito. Era pra ser mais simples, pois existe uma lib chamada bootstrap-vue e nela já existe um componente próprio pra isso (seria mamão com açúcar demais 🥱). Porém, essa lib foi feita pro Vue na versão 2, e na que eu tô usando, a 3, é preciso fazer uma gambiarra pra ela funcionar, mas eu preferi não fazer porque eu poderia ter um erro inesperado pela frente e daria mais dor de cabeça. Resumo da ópera: acabei achando uma implementação "na unha" de como fazer, mas como tudo na vida, não era só copiar e colar facilmente. Tive que mexer em muita coisa pra ela encaixar no meu código. Tive que sair do Pc algumas vezes pra espairecer a mente e pensar na solução com mais calma, o que me ajuda muito 🫡. Mas valeu a pena o esforço. Quando vi funcionando, tive uma grande dose de serotonina no cérebro! É muito satisfatório isso! Ver o seu projeto nascendo e aos poucos criando vida.
 
-## Project Setup
+E pra finalizar, quero dizer que curti muito essa dinâmica de flexibilizar o teste técnico ao gosto do candidato, pois estimula ainda mais a criatividade, a tomada de decisões e permite o aprendizado de novas ferramentas e tecnologias.
+
+## SETUP DO PROJETO 🛠
+
+### Requisitos
+
+```sh
+ >= Node.js 16.x
+```
+
+### Instalando as dependências
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Execuntando em modo de desenvolvimento
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## USANDO DOCKER 🐳
+
+### Buildando e executando
 
 ```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+docker compose up --build
 ```
